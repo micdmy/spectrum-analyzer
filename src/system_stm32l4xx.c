@@ -220,6 +220,33 @@ void SystemInit(void)
   /* Disable all interrupts */
   RCC->CIER = 0x00000000;
 
+  /*
+   * Enable PLL for 80MHz System Clk output
+   * Author: Michal Dmytruszynski
+   */
+#define PLLN_BITS_OFFSET 8
+  RCC->PLLCFGR =	RCC_PLLCFGR_PLLSRC_MSI //set MSI as input clock
+		  	  	    					   //devide it by 1 (PLLM = 1), default if bits zeroed
+		  	  	  |	(RCC_PLLCFGR_PLLN & (40 << PLLN_BITS_OFFSET)) //set VCO multiplication to 40
+				  	  	  	  	  	  	   //devide it by 2 (PLLR = 2, default if bits zeroed
+				  | RCC_PLLCFGR_PLLREN;	   //enable PLLCLK output
+  RCC->CR |= RCC_CR_PLLON;			//enable PLL
+  while( !(RCC->CR & RCC_CR_PLLRDY));	//wait until PLL ready
+  RCC->CFGR |= RCC_CFGR_SW;				//chose PLL as SYSCLK
+  while(!( (RCC->CFGR & RCC_CFGR_SWS) == RCC_CFGR_SWS)); //wait until PPL is chosen as SYSCLK
+
+  /*
+   * Set SYSCLK as MCO output, freq = 80MHz
+   * Author: MIchal Dmytruszynski
+   */
+  RCC->CFGR |= RCC_CFGR_MCOSEL_0; //set SYSCLK as MCO output
+  	  	  	  	  	  	  	  	  //default prescaler MCOPRE is 1
+  	  	  	  	  	  	  	  	  //WARNING! GPIO and alternative function should be set to obtain output on physical pin
+  /*
+     * Set SYSCLK as clock for ADC's, freq = 880MHz
+     * Author: MIchal Dmytruszynski
+     */
+  RCC->CCIPR |= RCC_CCIPR_ADCSEL; //set SYSCLK as clock for ADC's
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
