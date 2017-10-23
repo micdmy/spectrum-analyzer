@@ -232,6 +232,8 @@ void SystemInit(void)
 				  | RCC_PLLCFGR_PLLREN;	   //enable PLLCLK output
   RCC->CR |= RCC_CR_PLLON;			//enable PLL
   while( !(RCC->CR & RCC_CR_PLLRDY));	//wait until PLL ready
+  FLASH->ACR |= FLASH_ACR_LATENCY_4WS; //set four wait states
+  while( !((FLASH->ACR & FLASH_ACR_LATENCY) == FLASH_ACR_LATENCY_4WS)); //wait until changes taken into account
   RCC->CFGR |= RCC_CFGR_SW;				//chose PLL as SYSCLK
   while(!( (RCC->CFGR & RCC_CFGR_SWS) == RCC_CFGR_SWS)); //wait until PPL is chosen as SYSCLK
 
@@ -242,11 +244,14 @@ void SystemInit(void)
   RCC->CFGR |= RCC_CFGR_MCOSEL_0; //set SYSCLK as MCO output
   	  	  	  	  	  	  	  	  //default prescaler MCOPRE is 1
   	  	  	  	  	  	  	  	  //WARNING! GPIO and alternative function should be set to obtain output on physical pin
+
   /*
-     * Set SYSCLK as clock for ADC's, freq = 880MHz
+     * Set AHB clock for ADC's, freq = 80MHz
+     * This possibility is not depicted on the clock treee scheme in documentation
      * Author: MIchal Dmytruszynski
      */
-  RCC->CCIPR |= RCC_CCIPR_ADCSEL; //set SYSCLK as clock for ADC's
+  RCC->AHB2ENR |= RCC_AHB2ENR_ADCEN; //chose AHB clock fo ADC's
+
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
