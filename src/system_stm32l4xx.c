@@ -246,13 +246,6 @@ void SystemInit(void)
   	  	  	  	  	  	  	  	  //default prescaler MCOPRE is 1
   	  	  	  	  	  	  	  	  //WARNING! GPIO and alternative function should be set to obtain output on physical pin
 
-  /*
-     * Set AHB clock for ADC's, freq = 80MHz
-     * This possibility is not depicted on the clock treee scheme in documentation
-     * Author: MIchal Dmytruszynski
-     */
-  RCC->AHB2ENR |= RCC_AHB2ENR_ADCEN; //chose AHB clock fo ADC's
-
   /* Configure the Vector Table location add offset address ------------------*/
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
