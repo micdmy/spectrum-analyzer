@@ -224,6 +224,7 @@ void SystemInit(void)
    * Enable PLL for 80MHz System Clk output
    * Author: Michal Dmytruszynski
    */
+
 #define PLLN_BITS_OFFSET 8
   RCC->PLLCFGR =	RCC_PLLCFGR_PLLSRC_MSI //set MSI as input clock
 		  	  	    					   //devide it by 1 (PLLM = 1), default if bits zeroed
@@ -239,7 +240,7 @@ void SystemInit(void)
 
   /*
    * Set SYSCLK as MCO output, freq = 80MHz
-   * Author: MIchal Dmytruszynski
+   * Author: Michal Dmytruszynski
    */
   RCC->CFGR |= RCC_CFGR_MCOSEL_0; //set SYSCLK as MCO output
   	  	  	  	  	  	  	  	  //default prescaler MCOPRE is 1
