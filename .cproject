@@ -18,7 +18,7 @@
 							<option id="com.atollic.truestudio.toolchain_options.mcu.1692023195" name="Microcontroller" superClass="com.atollic.truestudio.toolchain_options.mcu" value="STM32L432KC" valueType="string"/>
 							<option id="com.atollic.truestudio.toolchain_options.vendor.516333112" name="Vendor name" superClass="com.atollic.truestudio.toolchain_options.vendor" value="STMicroelectronics" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="com.atollic.truestudio.exe.debug.toolchain.platform.283309248" isAbstract="false" name="Debug platform" osList="all" superClass="com.atollic.truestudio.exe.debug.toolchain.platform"/>
-							<builder buildPath="${workspace_loc:/spectrum analyzer}/Debug" id="com.atollic.truestudio.mbs.builder1.531112835" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="com.atollic.truestudio.mbs.builder1"/>
+							<builder buildPath="${workspace_loc:/spectrum analyzer}/Debug" customBuilderProperties="toolChainpathString=C:\\Program Files (x86)\\Atollic\\TrueSTUDIO for ARM 7.1.2\\ARMTools\\bin|toolChainpathType=1|" id="com.atollic.truestudio.mbs.builder1.531112835" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="com.atollic.truestudio.mbs.builder1"/>
 							<tool id="com.atollic.truestudio.exe.debug.toolchain.as.330970238" name="Assembler" superClass="com.atollic.truestudio.exe.debug.toolchain.as">
 								<option id="com.atollic.truestudio.common_options.target.endianess.667058755" name="Endianess" superClass="com.atollic.truestudio.common_options.target.endianess"/>
 								<option id="com.atollic.truestudio.common_options.target.mcpu.1893420038" name="Microcontroller" superClass="com.atollic.truestudio.common_options.target.mcpu" value="STM32L432KC" valueType="enumerated"/>
@@ -45,6 +45,8 @@
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32L4xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32L4xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/spectrum analyzer/Drivers/Dlibrary/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/spectrum analyzer/Drivers/Dlibrary/boards}&quot;"/>
 								</option>
 								<option id="com.atollic.truestudio.common_options.target.endianess.831162201" name="Endianess" superClass="com.atollic.truestudio.common_options.target.endianess"/>
 								<option id="com.atollic.truestudio.common_options.target.mcpu.815509608" name="Microcontroller" superClass="com.atollic.truestudio.common_options.target.mcpu" value="STM32L432KC" valueType="enumerated"/>
@@ -225,8 +227,12 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="spectrum analyzer.com.atollic.truestudio.exe.1850010756" name="Executable" projectType="com.atollic.truestudio.exe"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.atollic.truestudio.exe.debug.1265550033;com.atollic.truestudio.exe.debug.1265550033.;com.atollic.truestudio.exe.debug.toolchain.gcc.1268553990;com.atollic.truestudio.gcc.input.1962658363">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.atollic.truestudio.mbs.ARMToolsPerProjectProfileC"/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 </cproject>
