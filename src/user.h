@@ -1,6 +1,6 @@
 #ifndef USER_H
 #define USER_H
-#include "stm32l4xx.h"
+#include "stm32l432xx.h"
 #include "DNucleoL432KC.h"
 
 /*

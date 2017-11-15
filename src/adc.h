@@ -1,6 +1,6 @@
 #ifndef ADC_H
 #define ADC_H
-#include "stm32l4xx.h"
+#include "stm32l432xx.h"
 
 #define MY_ADC ADC1
 
