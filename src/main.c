@@ -1,10 +1,15 @@
 #include "stm32l4xx.h"
 #include "user.h"
+#include "adc.h"
 #include "DConfig.h"
 int main(void)
 {
-
+	/*
+	 * PLL is working, source clock is MSI.
+	 * SysClk = 80MHz. MCO available on GPIOA, pin 8 (Nucleo D9 goldpin)
+	 */
   mcoOutputPinEnable();
+ adcConfig();
   while (1)
   {
   }
