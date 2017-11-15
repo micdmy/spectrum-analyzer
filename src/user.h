@@ -6,6 +6,12 @@
 /*
  * Enables and configurates GPIOA PIN 8 for MCO.
  */
-void mcoOutputPinEnable(void);
+extern void mcoOutputPinEnable(void);
+
+extern void ledGreenConfig(void);
+
+extern void ledGreen(char onOff);
+
+extern void ledGreenToggle(void);
 
 #endif //USER_H

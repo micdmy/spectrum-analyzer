@@ -1,14 +1,12 @@
 #include "stm32l4xx.h"
 #include "user.h"
+#include "DConfig.h"
 int main(void)
 {
-  int i = 0;
 
   mcoOutputPinEnable();
-
   while (1)
   {
-	i++;
   }
   /*
    * Before enabling ADC:
