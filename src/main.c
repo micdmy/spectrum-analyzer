@@ -1,6 +1,5 @@
 #include "stm32l4xx.h"
 #include "user.h"
-#include "adc.h"
 #include "DConfig.h"
 int main(void)
 {
@@ -9,7 +8,7 @@ int main(void)
 	 * SysClk = 80MHz. MCO available on GPIOA, pin 8 (Nucleo D9 goldpin)
 	 */
   mcoOutputPinEnable();
- adcConfig();
+  adcConfig();
   while (1)
   {
   }
