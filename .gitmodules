@@ -1,0 +1,3 @@
+[submodule "Dlibrary"]
+	path = Dlibrary
+	url = https://github.com/micdmy/Dlibrary.git
