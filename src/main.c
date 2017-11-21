@@ -3,7 +3,7 @@
 #include "DConfig.h"
 
 #define buffersize 16ul
-uint16_t buffer[16];
+uint32_t buffer[16];
 void fillBufferWith(uint16_t fill) {
 	for(unsigned int i=0; i<buffersize; i++) {
 		buffer[i] = fill;
