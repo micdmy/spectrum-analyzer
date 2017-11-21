@@ -9,6 +9,8 @@ void fillBufferWith(uint16_t fill) {
 		buffer[i] = fill;
 	}
 }
+unsigned int i = 0;
+uint32_t temp=0;
 int main(void)
 {
 	mcoOutputPinEnable();
@@ -20,13 +22,18 @@ int main(void)
 	fillBufferWith(0xAA);
 
 	adcConfig();
-	dmaForAdcConfig((uint8_t *) buffer, buffersize);
+	//dmaForAdcConfig((uint8_t *) buffer, buffersize);
 
-	dmaForAdcStart();
-	adcStart();
+	//dmaForAdcStart();
+
 
 	while(1) {
-
+		adcStart();
+		while(!(MY_ADC->ISR & ADC_ISR_EOC));
+		temp = MY_ADC->DR & 0x00000FFF;
+		if(i==buffersize) {
+			i=0;
+		}
 	}
 
 
