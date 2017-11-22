@@ -9,6 +9,9 @@ void fillBufferWith(uint16_t fill) {
 		buffer[i] = fill;
 	}
 }
+
+uint8_t toSend[5] ={'S','T','M','3','2'};
+
 int main(void)
 {
 	mcoOutputPinEnable();
@@ -27,7 +30,10 @@ int main(void)
 	adcStart();
 
 	while(1) {
-
+		if(usartRec[(recNum-1) & (USART_REC_L-1)] == 't') {
+			usartRec[(recNum-1) & (USART_REC_L-1)] = 0;
+			DusartSendViaInterrupts(toSend, 5);
+		}
 	}
 
 
