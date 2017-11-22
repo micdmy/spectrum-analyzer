@@ -21,6 +21,7 @@ int main(void)
 
 	adcConfig();
 	dmaForAdcConfig((uint8_t *) buffer, buffersize);
+	DusartConfig();
 
 	dmaForAdcStart();
 	adcStart();
