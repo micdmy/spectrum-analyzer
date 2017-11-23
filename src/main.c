@@ -24,6 +24,7 @@ int main(void)
 
 	adcConfig();
 	dmaForAdcConfig((uint8_t *) buffer, buffersize);
+	dmaForUsartConfig();
 	DusartConfig();
 
 	dmaForAdcStart();
@@ -32,7 +33,7 @@ int main(void)
 	while(1) {
 		if(usartRec[(recNum-1) & (USART_REC_L-1)] == 't') {
 			usartRec[(recNum-1) & (USART_REC_L-1)] = 0;
-			DusartSendViaInterrupts(toSend, 5);
+			DusartSendViaDma((uint8_t *) toSend, 5);
 		}
 	}
 
